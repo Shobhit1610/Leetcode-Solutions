@@ -29,24 +29,23 @@ class GFG {
 
 // } Driver Code Ends
 
-
+// GFG
+// https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
 class solve {
-    // Function to determine if graph can be coloured with at most M colours
-    // such
-    // that no two adjacent vertices of graph are coloured with same colour.
+    // Function to determine if graph can be coloured with at most M colour such that no two adjacent vertices of graph are coloured with same colour.
     
     public boolean graphColoring(boolean adjMat[][], int totalColours, int n) {
         
         int[] colorOfNode = new int[n];
         Arrays.fill(colorOfNode,-1);
         
-        return DFS(adjMat,totalColours,0,colorOfNode,0);
+        return DFS(adjMat,totalColours,0,colorOfNode);
         
     }
     
-    public boolean DFS(boolean adjMat[][],int totalColours,int start,int[] colorOfNode,int index)
+    public boolean DFS(boolean adjMat[][],int totalColours,int start,int[] colorOfNode)
     {
-        if(index == adjMat.length)
+        if(start == adjMat.length)
             return true;
             
         for(int i=0;i<totalColours;i++)
@@ -54,7 +53,7 @@ class solve {
             if(canColor(start,i,adjMat,colorOfNode))
             {
                 colorOfNode[start] = i;
-                if(DFS(adjMat,totalColours,start+1,colorOfNode,index+1))
+                if(DFS(adjMat,totalColours,start+1,colorOfNode))
                 {
                     return true;
                 }
